@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://crfqv5ubdfy7s"]
+
+[ext_resource type="Texture2D" uid="uid://0y0i3weuvd64" path="res://assets/atlases/deck.png" id="1_exqlb"]
+[ext_resource type="Script" path="res://scripts/deck.gd" id="1_solvf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l0xy"]
+atlas = ExtResource("1_exqlb")
+region = Rect2(0, 2, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jxw6"]
+atlas = ExtResource("1_exqlb")
+region = Rect2(35, 2, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s83aq"]
+atlas = ExtResource("1_exqlb")
+region = Rect2(70, 2, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40qoh"]
+atlas = ExtResource("1_exqlb")
+region = Rect2(105, 2, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh6c3"]
+atlas = ExtResource("1_exqlb")
+region = Rect2(140, 2, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0efwd"]
+atlas = ExtResource("1_exqlb")
+region = Rect2(175, 2, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sitbb"]
+atlas = ExtResource("1_exqlb")
+region = Rect2(210, 2, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbnvh"]
+atlas = ExtResource("1_exqlb")
+region = Rect2(0, 2, 35, 43)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5osxh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l0xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jxw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s83aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40qoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh6c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0efwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sitbb")
+}],
+"loop": false,
+"name": &"blink",
+"speed": 18.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbnvh")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpcan"]
+size = Vector2(34, 42)
+
+[node name="Deck" type="Node2D"]
+script = ExtResource("1_solvf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5osxh")
+animation = &"blink"
+frame = 6
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lpcan")

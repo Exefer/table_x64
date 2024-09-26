@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://3q1f6o2gjflv"]
+
+[ext_resource type="Script" path="res://scripts/card.gd" id="1_0kvsu"]
+[ext_resource type="Texture2D" uid="uid://fq7hxvaw7mxh" path="res://assets/atlases/blank_cards.png" id="2_rcjio"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45y8c"]
+atlas = ExtResource("2_rcjio")
+region = Rect2(34, 91, 31, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g50ss"]
+size = Vector2(30, 42)
+
+[node name="Card" type="Node2D"]
+script = ExtResource("1_0kvsu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_45y8c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_g50ss")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
